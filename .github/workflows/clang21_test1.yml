@@ -1,4 +1,4 @@
-name: Build Clang21 test
+name: Build Clang 21
 
 on:
   workflow_dispatch:
