@@ -1,4 +1,4 @@
-name: Build Clang 21
+name: Cook_Clang_21
 
 on:
   workflow_dispatch:
