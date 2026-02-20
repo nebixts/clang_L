@@ -15,7 +15,7 @@ jobs:
 
       - name: Download Clang r584948
         run: |
-          URL="https://android.googlesource.com"
+          URL="https://android.googlesource.com/kernel/manifest -b common-android13-5.15-lts --depth=1"
           curl -L "$URL" -o clang-r584948.tar.gz
           echo "Download complete."
 
