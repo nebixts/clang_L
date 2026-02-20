@@ -1,0 +1,30 @@
+name: Upload Clang Toolchain to Release
+
+on:
+  workflow_dispatch: # Allows you to run this manually from the "Actions" tab
+
+jobs:
+  download-and-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create releases
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Clang r584948
+        run: |
+          URL="https://android.googlesource.com"
+          curl -L "$URL" -o clang-r584948.tar.gz
+          echo "Download complete."
+
+      - name: Create GitHub Release and Upload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Create a release with tag 'r584948' and upload the file
+          gh release create r584948 clang-r584948.tar.gz \
+            --title "Clang r584948 Toolchain" \
+            --notes "Prebuilt Clang r584948 for Android"
+            
