@@ -1,26 +1,26 @@
-name: Mirror Clang to Release
+name: Manual Re-release Clang
+
 on:
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch: # Manual trigger from the "Actions" tab
 
 jobs:
-  upload:
+  release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Required to create/update releases
+      contents: write # Required for creating releases
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download Clang Toolchain
+      - name: Download Clang Archive
         run: |
-          mkdir -p prebuilts/clang/host/linux-x86/
-          aria2c -x 16 -s 16 -o prebuilts/clang/host/linux-x86/+archive/42d2c090c14c9c7f4dfd365ae551e2b959dc775c/clang-r584948b.tar.gz \
-          "https://github.com/nebixts/clang_L/releases/download/v1.1.0/clang-r584948b.tar.gz"
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/42d2c090c14c9c7f4dfd365ae551e2b959dc775c/clang-r584948b.tar.gz" -o clang-r584948b.tar.gz
 
-      - name: Upload to GitHub Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.1.0
-          files: prebuilts/clang/host/linux-x86/clang-r5484948b.tar.gz
+          tag_name: "v1.1.0"
+          name: "Clang r584948b"
+          body: "Prebuilt Clang from Android Google Source."
+          files: clang-r584948b.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
