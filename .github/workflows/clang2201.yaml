@@ -14,7 +14,7 @@ jobs:
       - name: Download Clang Toolchain
         run: |
           mkdir -p prebuilts/clang/host/linux-x86/
-          aria2c -x 16 -s 16 -o prebuilts/clang/host/linux-x86/clang-r584948b.tar.gz \
+          aria2c -x 16 -s 16 -o prebuilts/clang/host/linux-x86/+archive/42d2c090c14c9c7f4dfd365ae551e2b959dc775c/clang-r584948b.tar.gz \
           "https://github.com/nebixts/clang_L/releases/download/v1.1.0/clang-r584948b.tar.gz"
 
       - name: Upload to GitHub Release
