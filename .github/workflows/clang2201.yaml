@@ -1,0 +1,26 @@
+name: Mirror Clang to Release
+on:
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create/update releases
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Clang Toolchain
+        run: |
+          mkdir -p prebuilts/clang/host/linux-x86/
+          aria2c -x 16 -s 16 -o prebuilts/clang/host/linux-x86/clang-r584948b.tar.gz \
+          "https://github.com/nebixts/clang_L/releases/download/v1.1.0/clang-r584948b.tar.gz"
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.1.0
+          files: prebuilts/clang/host/linux-x86/clang-r5484948b.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
