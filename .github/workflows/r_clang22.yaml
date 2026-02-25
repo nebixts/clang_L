@@ -1,4 +1,4 @@
-name: Manual Re-release Clang
+name: Release_Clang22
 
 on:
   workflow_dispatch: # Manual trigger from the "Actions" tab
@@ -12,15 +12,15 @@ jobs:
     steps:
       - name: Download Clang Archive
         run: |
-          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/42d2c090c14c9c7f4dfd365ae551e2b959dc775c/clang-r584948b.tar.gz" -o clang-r584948b.tar.gz
-
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/mirror-goog-main-llvm-toolchain-source/clang-r584948.tar.gz" -o clang-r584948.tar.gz
+    
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v1.1.0"
-          name: "Clang r584948b"
+          tag_name: "v1.2.0"
+          name: "Clang22 r584948"
           body: "Prebuilt Clang from Android Google Source."
-          files: clang-r584948b.tar.gz
+          files: clang-r584948.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
