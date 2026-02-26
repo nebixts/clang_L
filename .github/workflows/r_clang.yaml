@@ -20,7 +20,7 @@ jobs:
           tag_name: "v1.3.0"
           name: "Clang20 r547379"
           body: "Prebuilt AOSP Clang from Android Google Source."
-          files: clang-r584948.tar.gz
+          files: clang-r547379.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
