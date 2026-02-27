@@ -1,0 +1,30 @@
+name: Release2_Clang
+
+on:
+  workflow_dispatch: # Manual trigger from the "Actions" tab
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required for creating releases
+
+    steps:
+      - name: Download Clang Archive
+        run: |
+          # Downloading clang-r584948 (Current AOSP Clang-Stable)
+          curl -L "https://android.googlesource.com" -o clang-r584948.tar.gz
+    
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v1.4.0" # Incremented tag version
+          name: "Clang r584948 Stable"
+          body: |
+            ## AOSP Clang Prebuilt
+            - **Version:** r584948 (Stable)
+            - **Source:** [Android Google Source](https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/mirror-goog-main-llvm-toolchain-source/README.md)
+            - **Update Date:** February 2026
+          files: clang-r584948.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
