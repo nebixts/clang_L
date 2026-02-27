@@ -13,12 +13,12 @@ jobs:
       - name: Download Clang Archive
         run: |
           # Downloading clang-r584948 (Current AOSP Clang-Stable)
-          curl -L "https://android.googlesource.com" -o clang-r584948.tar.gz
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/mirror-goog-main-llvm-toolchain-source/clang-r584948.tar.gz" -o clang-r584948.tar.gz
     
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v1.4.0" # Incremented tag version
+          tag_name: "v1.4.1" # Incremented tag version
           name: "Clang r584948 Stable"
           body: |
             ## AOSP Clang Prebuilt
