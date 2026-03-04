@@ -1,4 +1,4 @@
-name: Release2_Clang
+name: Release_Clang20
 
 on:
   workflow_dispatch: # Manual trigger from the "Actions" tab
