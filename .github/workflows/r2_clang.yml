@@ -18,8 +18,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v1.4.2" # Incremented tag version
-          name: "Clang r584948 Stable"
+          tag_name: "v1.5.1" # Incremented tag version
+          name: "Clang22 r584948 Stable"
           body: |
             ## AOSP Clang Prebuilt
             - **Version:** r584948 (Stable)
