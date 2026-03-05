@@ -13,7 +13,7 @@ jobs:
       - name: Download Clang Archive
         run: |
           # Downloading clang-r522817 (Current AOSP Clang-Stable)
-          curl -L "https://android.googlesource.com" -o clang-r522817.tar.gz
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/6a853dd45fe8f0d1821deb899c77a7b954b6306b/clang-r522817.tar.gz" -o clang-r522817.tar.gz
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
