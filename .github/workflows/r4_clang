@@ -1,0 +1,29 @@
+name: Release_Clang22b
+
+on:
+  workflow_dispatch: # Manual trigger from the "Actions" tab
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required for creating releases
+
+    steps:
+      - name: Download Clang Archive
+        run: |
+          # Downloading clang-r584948 (Current AOSP Clang-Stable)
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/42d2c090c14c9c7f4dfd365ae551e2b959dc775c/clang-r584948b.tar.gz" -o clang-r584948b.tar.gz
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v1.5.3" # Incremented tag version
+          name: "Clang22 r584948b Stable"
+          body: |
+            ## AOSP Clang Prebuilt
+            - **Version:** r584948b (Stable)
+            - **Source:** [Android Google Source](https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/mirror-goog-main-llvm-toolchain-source/README.md)
+            - **Update Date:** March 2026
+          files: clang-r584948b.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
