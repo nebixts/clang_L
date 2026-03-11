@@ -21,7 +21,7 @@ jobs:
           name: "Clang19 r530567 Stable"
           body: |
             ## AOSP Clang Prebuilt
-            - **Version:** r530567 (Stable)
+            - **Version:** CLang v19.0.0 - r530567 (Stable)
             - **Source:** [Android Google Source](https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/mirror-goog-main-llvm-toolchain-source/README.md)
             - **Update Date:** March 2026
           files: clang-r530567.tar.gz
