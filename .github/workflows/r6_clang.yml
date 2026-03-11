@@ -1,0 +1,29 @@
+name: Release_Clang19b
+
+on:
+  workflow_dispatch: # Manual trigger from the "Actions" tab
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required for creating releases
+
+    steps:
+      - name: Download Clang Archive
+        run: |
+          # Downloading clang-r536225 (Current AOSP Clang-Stable)
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/192fe0d378bb9cd4d4271de3e87145a1956fef40/clang-r536225.tar.gz" -o clang-r536225.tar.gz
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v1.5.5" # Incremented tag version
+          name: "Clang19 r536225 Stable"
+          body: |
+            ## AOSP Clang Prebuilt
+            - **Version:** CLang 19.0.1 - r536225 (Stable)
+            - **Source:** [Android Google Source](https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/mirror-goog-main-llvm-toolchain-source/README.md)
+            - **Update Date:** March 2026
+          files: clang-r536225.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
