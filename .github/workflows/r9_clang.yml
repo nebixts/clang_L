@@ -1,4 +1,4 @@
-name: Release_Clang22x
+name: Release_Clang2212
 
 on:
   workflow_dispatch: # Manual trigger from the "Actions" tab
@@ -12,18 +12,18 @@ jobs:
     steps:
       - name: Download Clang Archive
         run: |
-          # Downloading clang-r596125x (Current AOSP Clang-Stable)
-          curl -L "https://github.com/Xtra-Manager-Software/XClang-Binaries/releases/download/xclangpolly-thinlto-22.1.2/XClang-22.1.2-Polly.tar.gz" -o clang-r596125x.tar.gz
+          # Downloading xclang-v22.1.2 Stable
+          curl -L "https://github.com/Xtra-Manager-Software/XClang-Binaries/releases/download/xclangpolly-thinlto-22.1.2/XClang-22.1.2-Polly.tar.gz" -o xclang-v22.1.2-polly.tar.gz
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v1.5.8" # Incremented tag version
-          name: "Clang22 r596125x Stable"
+          tag_name: "v2.0.1" # Incremented tag version
+          name: "XClang - CLang 22.1.2 Stable"
           body: |
-            ## AOSP Clang Prebuilt
-            - **Version:** CLang 22.1.2 - r596125x (Stable)
-            - **Source:** [Android Google Source](https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/mirror-goog-main-llvm-toolchain-source/README.md)
+            ## Custom Clang Prebuilt
+            - **Version:** XCLang - CLang 22.1.2 (Stable)
+            - **Source:** [XCLang Source](https://github.com/Xtra-Manager-Software/XClang-Binaries/blob/xclang/README.md)
             - **Update Date:** April 2026
-          files: clang-r596125x.tar.gz
+          files: xclang-v22.1.2-polly.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
