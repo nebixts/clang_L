@@ -13,17 +13,17 @@ jobs:
       - name: Download Clang Archive
         run: |
           # Downloading clang-r596125 (Current AOSP Clang Stable)
-          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/deeac453b3f9464dc426774d3224da18e5988f34/clang-r596125.tar.gz" -o clang-r596125.tar.gz
+          curl -L "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/875512070ef3c7ca7973e05ad683f19b78a993b6/clang-r596125.tar.gz" -o clang-r596125.tar.gz
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v2.0.2" # Incremented tag version
+          tag_name: "v2.0.3" # Incremented tag version
           name: "Clang22 r596125 Stable"
           body: |
             ## AOSP Clang Prebuilt
             - **Version:** CLang 22.0.2 - r596125 (Stable)
             - **Source:** [Android Google Source](https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/mirror-goog-main-llvm-toolchain-source/README.md)
-            - **Update Date:** 20 May 2026
+            - **Update Date:** 27 May 2026
           files: clang-r596125.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
